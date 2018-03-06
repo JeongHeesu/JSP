@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>ddit</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+<!--   		해당 어플리케이션 내에서 글로벌하게 활용되는 상수 선언 -->
+	<context-param>
+		<param-name>oracleDriver</param-name>
+		<param-value>oracle.jdbc.driver.OracleDriver</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>oracleURL</param-name>
+		<param-value>jdbc:oracle:thin:@domain or ip:1521:ddit.or.kr@pwd</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>mySqlDriver</param-name>
+		<param-value>com.mysql.jdbc.driver</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>mysqlURL</param-name>
+		<param-value>jdbc:mysql://domain or ip:3306/db명</param-value>
+	</context-param>  
+	
+	<!-- 
+		웹 어플리게이션 익셉션 처리
+			1. jsp 디렉티브 내에 errorPage 정의(X)
+			2. web.xml에 errorPage 내 exception-type 선언으로 정의(선택)
+			3. wbe.xml error page error_code 선언으로 정의(널리 사용)
+	 --> 
+	
+<!-- 	<error-page> -->
+<!-- 		<exception-type>java.lan.ArithmeticException</exception-type> -->
+<!-- 		<location>/error/errorCtrl.jsp</location> -->
+<!-- 	</error-page>	 -->
+	
+	
+<!-- 	<error-page> -->
+<!-- 		<exception-type>java.lan.NullPointerException</exception-type> -->
+<!-- 		<location>/error/errorCtrl.jsp</location> -->
+<!-- 	</error-page> -->
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/error500.jsp</location>
+	</error-page>
+	
+</web-app>
