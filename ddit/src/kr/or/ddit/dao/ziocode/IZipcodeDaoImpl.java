@@ -1,4 +1,4 @@
-package kr.or.ddit.zipcode.dao;
+package kr.or.ddit.dao.ziocode;
 /**
  * @Interface Name : IZipcodeDaoImpl.java
  * @Description : dao에서  DB로 연결

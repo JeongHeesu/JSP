@@ -39,7 +39,8 @@
 	pwdCookie.setMaxAge(60*60*24);
 	// http://localhost/ddit/09/viewCookie.jsp 쿠키전송
 	// http://localhost/ddit/05/loginForm.jsp 쿠키 미전송
-	pwdCookie.setPath("/ddit/09");
+// 	pwdCookie.setPath("/ddit/09");
+	pwdCookie.setPath("/");
 	response.addCookie(pwdCookie);
 	
 	// 클라이언트에 존재하는 쿠키저장소(메로리 또는 파일단위)에는 ISO8859-1 인코딩 환경설정.

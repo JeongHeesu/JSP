@@ -1,8 +1,8 @@
-package kr.or.ddit.zipcode.service;
+package kr.or.ddit.service.zipcode;
 
 /**
- * @Interface Name : IZipcodeServiceImpl.java
- * @Description : ziptb 컬럼
+ * @class Name : IZipcodeServiceImpl.java
+ * @Description : Dao 연결
  * @Modification Information
  * @author 정희수
  * @since  2018.03.05.
@@ -21,9 +21,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import kr.or.ddit.dao.ziocode.IZipcodeDao;
+import kr.or.ddit.dao.ziocode.IZipcodeDaoImpl;
 import kr.or.ddit.vo.ZipcodeVO;
-import kr.or.ddit.zipcode.dao.IZipcodeDao;
-import kr.or.ddit.zipcode.dao.IZipcodeDaoImpl;
 
 public class IZipcodeServiceImpl implements IZipcodeService{
 

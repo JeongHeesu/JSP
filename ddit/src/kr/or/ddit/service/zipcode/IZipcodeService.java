@@ -1,4 +1,4 @@
-package kr.or.ddit.zipcode.service;
+package kr.or.ddit.service.zipcode;
 /**
  * @Interface Name : IZipcodeService.java
  * @Description : service 단

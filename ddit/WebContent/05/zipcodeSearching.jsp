@@ -14,8 +14,8 @@
 <%@page import="org.codehaus.jackson.map.ObjectMapper"%>
 <%@page import="kr.or.ddit.vo.ZipcodeVO"%>
 <%@page import="java.util.List"%>
-<%@page import="kr.or.ddit.zipcode.service.IZipcodeServiceImpl"%>
-<%@page import="kr.or.ddit.zipcode.service.IZipcodeService"%>
+<%@page import="kr.or.ddit.service.zipcode.IZipcodeServiceImpl"%>
+<%@page import="kr.or.ddit.service.zipcode.IZipcodeService"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/plain; charset=UTF-8"

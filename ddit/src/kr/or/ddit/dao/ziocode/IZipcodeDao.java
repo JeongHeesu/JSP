@@ -1,4 +1,4 @@
-package kr.or.ddit.zipcode.dao;
+package kr.or.ddit.dao.ziocode;
 /**
  * @Interface Name : IZipcodeDao.java
  * @Description : Dao 단

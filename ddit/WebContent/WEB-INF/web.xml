@@ -53,4 +53,10 @@
 		<location>/error/error500.jsp</location>
 	</error-page>
 	
+	<!-- 세션유효시간 : 분단위 설정 -->
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+	
+	
 </web-app>
