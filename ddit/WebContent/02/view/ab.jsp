@@ -9,6 +9,7 @@
  *    수정일       수정자          수정내용
  *    -------      -------     -------------------
  *    2018.02.20.  정희수      최초작성
+ *    2018.03.12.  정희수      EL 태그변경
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
@@ -25,6 +26,6 @@ response.setCharacterEncoding("UTF-8");
 <title>Insert title here</title>
 </head>
 <body>
-<%=request.getParameter("myName") %> 님의 혈액형은 AB 입니다.
+${param.myName } 님의 혈액형은 AB 입니다.
 </body>
 </html>

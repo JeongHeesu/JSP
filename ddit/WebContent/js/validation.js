@@ -67,4 +67,11 @@ String.prototype.validationCOMTEL = function(){
 String.prototype.validationHP = function(){
 	return /^01(0|1|6|7-9)-\d{3,4}-\d{4}$/.test(this);
 };
+String.prototype.validationTITLE = function(){
+	return /^[0-9a-z가-힣]+$/.test(this);
+};
+String.prototype.validationNICKNAME = function(){
+	return /^[가-힣]{1,4}$/.test(this);
+};
+
 

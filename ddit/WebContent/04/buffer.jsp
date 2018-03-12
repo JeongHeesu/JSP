@@ -17,6 +17,7 @@
 <%@
 	page buffer="1kb" autoFlush="false"
  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -46,5 +47,15 @@
  		}
  	}
  %>
+<%--  <c:forEach begin="0" end="50" var="i"> --%>
+<!--  	out.println("전체 버퍼 사이즈 : "+ out.getBufferSize()+"<br>"); -->
+<!--  	out.println("가용 버퍼 사이즈 : " + out.getRemaining()+"<br>"); -->
+<!--  	<p> 아무것도 하기 싫다. 아무것도 하고있지 않지만, 더 격하게 아무것도 하기싫다. <br/> -->
+<%--  	<c:if test="${i%5 ==0 }"> --%>
+<!--  		out.clearBuffer(); -->
+<%--  	</c:if> --%>
+<%--  </c:forEach> --%>
+ 
+ 
 </body>
 </html>

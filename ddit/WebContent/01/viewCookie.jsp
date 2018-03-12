@@ -9,12 +9,15 @@
  *    수정일       수정자          수정내용
  *    -------      -------     -------------------
  *    2018.03.06.  정희수      최초작성
+ *    2018.03.12.  정희수      EL 태그변경
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
 <%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="" value=""></c:set>
 <%
 	// 클라이언트의 쿠키저장소에 저장된 쿠키는 해당 쿠키의 도메인, 경로 ㅅ ㅓㄹ정에 따라
 	// 클라이언트의 서버요청시 동반 전송.

@@ -8,6 +8,7 @@
  *    수정일       	수정자          수정내용
  *    -------      -------     -------------------
  *    2018.02.26. 	 정희수    	(스크립트-로그아웃)최초작성
+ *    2018.03.12. 	 정희수    	EL 태그변경
  * Copyright (c) 2018 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
@@ -76,7 +77,7 @@ function logOut(){
 					
 // 	var msg = encodeURIComponent('로그아웃되었습니다.');
 <%-- 	location.href =  '<%=request.getContextPath()%>/05/loginForm.jsp?message=' + msg; --%>
-	$(location).attr('href','<%=request.getContextPath()%>/05/logout.jsp');
+	$(location).attr('href','${pageContext.request.contextPath}/05/logout.jsp');
 
 }
 

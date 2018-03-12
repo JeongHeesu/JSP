@@ -9,6 +9,7 @@
  *    수정일       수정자          수정내용
  *    -------      -------     -------------------
  *    2018.02.20.  정희수      최초작성
+ *    2018.03.12.  정희수      EL 태그
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
@@ -16,7 +17,6 @@
     pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("UTF-8");	
-response.setCharacterEncoding("UTF-8");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -25,7 +25,8 @@ response.setCharacterEncoding("UTF-8");
 <title>Insert title here</title>
 </head>
 <body>
-<%=request.getParameter("myName") %> 님의 혈액형은 A 입니다.
+<%-- <%=request.getParameter("myName") %> 님의 혈액형은 A 입니다. --%>
+${param.myName } 님의 혈액형은 A 입니다.
 
 
 
