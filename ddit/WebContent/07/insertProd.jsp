@@ -19,7 +19,7 @@
     pageEncoding="UTF-8"%>
     
 <%
-	request.setCharacterEncoding("UTF-8");
+	
 	
 	ProdVO prodInfo = new ProdVO();
 	BeanUtils.populate(prodInfo, request.getParameterMap());

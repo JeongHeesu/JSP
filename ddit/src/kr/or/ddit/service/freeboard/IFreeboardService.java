@@ -3,6 +3,8 @@ package kr.or.ddit.service.freeboard;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.fileupload.FileItem;
+
 import kr.or.ddit.vo.FreeboardVO;
 /**
  * @Class Name : IFreeboardService.java
@@ -38,7 +40,7 @@ public interface IFreeboardService {
 	 * @param freeboardInfo
 	 * @return String
 	 */
-	public String insertFreeboardInfo(FreeboardVO freeboardInfo);
+	public String insertFreeboardInfo(FreeboardVO freeboardInfo, FileItem[] items);
 	
 	/**
 	 * 게시글 수정

@@ -19,7 +19,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-// 	request.setCharacterEncoding("UTF-8");
+// 	
 	
 	String name =URLEncoder.encode(request.getParameter("myName"), "UTF-8");
 	String bloodType = request.getParameter("bloodType");
@@ -45,7 +45,7 @@
 // 		}
 	%> 
 	
-	<c:choose>
+<c:choose>
 	<c:when test="${ bloodType == 'A' }">
 		<c:import url="/02/view/a.jsp" >
 			<c:param name="myName" value="${myName }" />

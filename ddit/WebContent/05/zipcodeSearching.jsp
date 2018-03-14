@@ -24,7 +24,7 @@
 	//[{ "flag" : "true" },{ "flag" : "true" }]
 	// /ddit/05/zipcodeSearching.jsp
 	// 전송방식:post  dong=온천동
-	request.setCharacterEncoding("UTF-8");
+	
 	
 	String dong = request.getParameter("dong");
 	

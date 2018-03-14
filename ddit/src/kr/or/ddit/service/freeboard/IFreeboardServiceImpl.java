@@ -4,8 +4,14 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.fileupload.FileItem;
+
+import kr.or.ddit.dao.fileitem.IFileItemDao;
+import kr.or.ddit.dao.fileitem.IFileItemDaoImpl;
 import kr.or.ddit.dao.freeboard.IFreeboardDao;
 import kr.or.ddit.dao.freeboard.IFreeboardDaoImpl;
+import kr.or.ddit.utils.AttachFileMapper;
+import kr.or.ddit.vo.FileItemVO;
 import kr.or.ddit.vo.FreeboardVO;
 
 /**
@@ -27,11 +33,12 @@ import kr.or.ddit.vo.FreeboardVO;
  */
 public class IFreeboardServiceImpl implements IFreeboardService {
 	private static IFreeboardService service = new IFreeboardServiceImpl();
-	
+	private IFileItemDao fileItemDao;
 	private static IFreeboardDao dao;
 	
 	private IFreeboardServiceImpl(){
 		dao = IFreeboardDaoImpl.getInstance();
+		fileItemDao = IFileItemDaoImpl.getInstance();
 	}
 	
 	public static IFreeboardService getInstance(){
@@ -68,11 +75,13 @@ public class IFreeboardServiceImpl implements IFreeboardService {
 	 * 게시글 등록
 	 */
 	@Override
-	public String insertFreeboardInfo(FreeboardVO freeboardInfo) {
+	public String insertFreeboardInfo(FreeboardVO freeboardInfo, FileItem[] items) {
 		String bo_no = null;
 		
 		try {
 			bo_no = dao.insertFreeboardInfo(freeboardInfo);
+			List<FileItemVO> fileItemList = AttachFileMapper.mapping(bo_no,items);
+			fileItemDao.insertFileItemInfo(fileItemList);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

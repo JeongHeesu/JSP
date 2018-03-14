@@ -1,5 +1,7 @@
 package kr.or.ddit.vo;
 
+import java.util.List;
+
 
 /**
  * @Class Name : FreeboardVO.java
@@ -13,6 +15,7 @@ package kr.or.ddit.vo;
  *    수정일       수정자          수정내용
  *    -------      -------     -------------------
  *    2018.03.09.  정희수      최초작성
+ *    2018.03.14.  정희수      첨부파일 추가
  * Copyright (c) 2018 by DDIT  All right reserved
  * </pre>
  */
@@ -35,6 +38,7 @@ public class FreeboardVO {
 	private String bo_seq;
 	private String bo_depth;
 	
+	private List<FileItemVO> fileItemList;
 	
 	public String getRnum() {
 		return rnum;
@@ -122,6 +126,12 @@ public class FreeboardVO {
 	}
 	public String getBo_depth() {
 		return bo_depth;
+	}
+	public List<FileItemVO> getFileItemList() {
+		return fileItemList;
+	}
+	public void setFileItemList(List<FileItemVO> fileItemList) {
+		this.fileItemList = fileItemList;
 	}
 	public void setBo_depth(String bo_depth) {
 		this.bo_depth = bo_depth;

@@ -19,7 +19,7 @@
     pageEncoding="UTF-8"%>
     
 <%
-	request.setCharacterEncoding("UTF-8");
+	
 	
 	MemberVO memberInfo = new MemberVO();
 	BeanUtils.populate(memberInfo, request.getParameterMap());

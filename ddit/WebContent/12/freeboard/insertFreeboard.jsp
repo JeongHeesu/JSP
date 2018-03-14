@@ -12,6 +12,7 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
+<%@page import="kr.or.ddit.utils.FileUploadRequestWrapper"%>
 <%@page import="kr.or.ddit.service.freeboard.IFreeboardServiceImpl"%>
 <%@page import="kr.or.ddit.service.freeboard.IFreeboardService"%>
 <%@page import="org.apache.commons.beanutils.BeanUtils"%>
@@ -20,14 +21,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
-	request.setCharacterEncoding("UTF-8");
+	FileUploadRequestWrapper wrapper = (FileUploadRequestWrapper)request;
 
 	FreeboardVO freeboardInfo = new FreeboardVO();
 	
-	BeanUtils.populate(freeboardInfo, request.getParameterMap());
+	BeanUtils.populate(freeboardInfo, wrapper.getParameterMap());
 	
 	IFreeboardService service = IFreeboardServiceImpl.getInstance();
-	service.insertFreeboardInfo(freeboardInfo);
+	service.insertFreeboardInfo(freeboardInfo, wrapper.getFileitemValues("files"));
 	
 	response.sendRedirect(request.getContextPath() + "/12/main.jsp");
 %>

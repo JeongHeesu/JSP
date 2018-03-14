@@ -43,17 +43,18 @@ td {
 </style>
 <body>
 	<form name="memberForm" method="post"
-		action="<%=request.getContextPath()%>/05/insertMemberInfo.jsp">
+		action="${pageContext.request.contextPath }/05/insertMemberInfo.jsp">
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td class="tLine" colspan="2"></td>
 			</tr>
 			<tr>
 				<td rowspan="13" class="pic" colspan="2"
-					style="vertical-align: bottom; width: 150px; text-align: center;"><img
-					src="${pageContext.request.contextPath }/image/btn_pic.gif"
+					style="vertical-align: bottom; width: 150px; text-align: center;">
+					<div style="overflow: auto; white-space: nowrap; overflow-X: hidden; height: 200px;" id="viewTable"></div>
+					<img src="${pageContext.request.contextPath }/image/btn_pic.gif"
 					alt="사진올리기" class="btn" title="인적사항에 올릴 증명	을 검색합니다."
-					style="cursor: pointer;" /><br />
+					style="cursor: pointer;" id="picBtn"/><br />
 					<div style="width: 100%" align="center">size : 235x315 이하</div></td>
 			</tr>
 			<tr>
@@ -307,7 +308,7 @@ td {
 		//팝업 : 모달- 포커스 독점 ( 해당 팝업이 종료되기까지 기타 윈도우에 포커스 천이되지 않음)
 		//		모달리스 - 포커스 이동이 자유로움.
 		$('#zipcodeBtn').click(function(){
-			var url = '<%=request.getContextPath()%>/05/zipcodeSearch.jsp';
+			var url = '${pageContext.request.contextPath}/05/zipcodeSearch.jsp';
 			var opts ='toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,copyhistory=no'+
 						'width=375,height=400';
 			
@@ -315,7 +316,13 @@ td {
 			//2. 해당 도큐먼트의 타이틀
 			//3. 옵션
 			window.open(url, '우편번호검색', opts);
-		})
+		});
+		$('#picBtn').click(function(){
+			var url = '${pageContext.request.contextPath}/05/idPicFileupload.jsp';
+			var opts ='toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,copyhistory=no'+
+						'width=375,height=400';
+			window.open(url, '증명사진검색', opts);
+		});
 		
 	});
 	function stopsubmit(message) {
@@ -339,7 +346,9 @@ td {
 				//[{flag:ture},{flage:faluse}] -> 배열
 				alert(result.flag);
 			}
-		})
+		});
+		
+		
 		
 	}
 </script>

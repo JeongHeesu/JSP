@@ -22,7 +22,7 @@
 		전송패킷 : mem_id=a001&mem_pass=asdfasdf&mem_name=김은대&param_group=첫번째&param_group=다섯번째
 -->
 <%
-	request.setCharacterEncoding("UTF-8");
+	
 %> 
 <!--    
 	html 태그 랜더링 처리
