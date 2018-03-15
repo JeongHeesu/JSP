@@ -1,14 +1,13 @@
 <%--==============================================================
  * 로그인 체크(id와 비번 일치 확인)
  * @author 정희수
- * @since  2018.02.22.
+ * @since  2018.03.15.
  * @version 1.0
  * <pre>
  * << 개정이력(Modification Information) >>
  *    수정일       	수정자          수정내용
  *    -------      -------     -------------------
- *    2018.02.22. 	 정희수    	최초작성
- *    2018.03.05. 	 정희수    	session 작성
+ *    2018.03.15. 	 정희수    	최초작성
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
@@ -38,10 +37,10 @@
 	
 	if( memberInfo == null ){
 		String message = URLEncoder.encode("회원이 아닙니다.","UTF-8");
-		response.sendRedirect(request.getContextPath() + "/05/loginForm.jsp?message="+message);
+		response.sendRedirect(request.getContextPath() + "/11/loginForm.jsp?message="+message);
 	}else{
 		session.setAttribute("LOGIN_MEMBERINFO", memberInfo);
-		response.sendRedirect(request.getContextPath()+"/05/main.jsp");
+		response.sendRedirect(request.getContextPath()+"/12/main.jsp");
 	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

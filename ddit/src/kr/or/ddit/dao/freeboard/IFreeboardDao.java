@@ -20,6 +20,7 @@ import kr.or.ddit.vo.FreeboardVO;
  *    수정일       수정자          수정내용
  *    -------      -------     -------------------
  *    2018.03.09.  정희수      최초작성
+ *    2018.03.15.  정희수      개시글 수
  * Copyright (c) 2018 by DDIT  All right reserved
  * </pre>
  */
@@ -38,7 +39,7 @@ public interface IFreeboardDao {
 	  * @throws SQLException
 	 * @return List<FreeboardVO>
 	 */
-	public List<FreeboardVO> getFreeboardList()throws SQLException;
+	public List<FreeboardVO> getFreeboardList(Map<String, String> params)throws SQLException;
 	
 	/**
 	 * 게시글 등록
@@ -47,6 +48,14 @@ public interface IFreeboardDao {
 	 * @return String
 	 */
 	public String insertFreeboardInfo(FreeboardVO freeboardInfo)throws SQLException;
+	
+	/**
+	 * 댓글
+	 * @param freeboardInfo
+	 * @return
+	 * @throws SQLException
+	 */
+	public String insertFreeboardReplyInfo(FreeboardVO freeboardInfo)throws SQLException;
 	
 	/**
 	 * 게시글 수정
@@ -61,4 +70,12 @@ public interface IFreeboardDao {
 	 * @param params
 	 */
 	public void deleteFreeboardInfo(Map<String, String> params)throws SQLException;
+	
+	/**
+	 * 게시글 개수
+	 * @param params
+	 * @return Integer
+	 * @throws SQLException
+	 */
+	public int getTotalCount(Map<String, String> params) throws SQLException;
 }

@@ -1,3 +1,16 @@
+<%--==============================================================
+ * 브라우저 다운로드
+ * @author 정희수
+ * @since  2018.03.13.
+ * @version 1.0
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    수정일       	수정자          수정내용
+ *    -------      -------     -------------------
+ *    2018.03.13. 	 정희수    	최초작성 
+ * Copyright (c) 2018 by DDIT  All right reserved
+ * </pre>
+===============================================================--%>
 <%@page import="java.io.BufferedOutputStream"%>
 <%@page import="java.io.FileInputStream"%>
 <%@page import="java.io.BufferedInputStream"%>

@@ -6,9 +6,25 @@ import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+import kr.or.ddit.dao.idpic.IIDPicDao;
 import kr.or.ddit.ibatis.factory.SqlMapClientFactory;
 import kr.or.ddit.vo.FileItemVO;
-
+/**
+ * @Class Name : IFileItemDaoImpl.java
+ * @Description :  쿼리질의
+ * @Modification Information
+ * @author 정희수
+ * @since  2018.03.14.
+ * @see IFileItemDao
+ * @version 1.0
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    수정일       수정자          수정내용
+ *    -------      -------     -------------------
+ *    2018.03.14.  정희수       최초작성
+ * Copyright (c) 2018 by DDIT  All right reserved
+ * </pre>
+ */
 public class IFileItemDaoImpl implements IFileItemDao {
 	
 	private static IFileItemDao dao = new IFileItemDaoImpl();
@@ -37,6 +53,9 @@ public class IFileItemDaoImpl implements IFileItemDao {
 
 	}
 
+	/**
+	 * 파일불러오기
+	 */
 	@Override
 	public FileItemVO getFileItemInfo(Map<String, String> params)
 			throws SQLException {
@@ -50,6 +69,9 @@ public class IFileItemDaoImpl implements IFileItemDao {
 		return null;
 	}
 
+	/**
+	 * 파일등록
+	 */
 	@Override
 	public void insertFileItemInfo(List<FileItemVO> fileItemList)
 			throws SQLException {

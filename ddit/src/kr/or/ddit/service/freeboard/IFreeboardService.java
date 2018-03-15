@@ -33,7 +33,7 @@ public interface IFreeboardService {
 	 * 게시판리스트 가져오기
 	 * @return List<FreeboardVO>
 	 */
-	public List<FreeboardVO> getFreeboardList();
+	public List<FreeboardVO> getFreeboardList(Map<String, String> params);
 	
 	/**
 	 * 게시글 등록
@@ -42,6 +42,12 @@ public interface IFreeboardService {
 	 */
 	public String insertFreeboardInfo(FreeboardVO freeboardInfo, FileItem[] items);
 	
+	/**
+	 * 댓글
+	 * @param freeboardInfo
+	 * @return
+	 */
+	public String insertFreeboardReplyInfo(FreeboardVO freeboardInfo);
 	/**
 	 * 게시글 수정
 	 * @param freeboardInfo
@@ -53,6 +59,13 @@ public interface IFreeboardService {
 	 * @param params
 	 */
 	public void deleteFreeboardInfo(Map<String, String> params);
+	
+	/**
+	 * 개시글 개수
+	 * @param params
+	 * @return
+	 */
+	public int getTotalCount(Map<String, String> params);
 	
 	
 //	#BO_NO#,

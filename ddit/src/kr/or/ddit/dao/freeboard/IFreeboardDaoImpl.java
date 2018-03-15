@@ -54,10 +54,41 @@ public class IFreeboardDaoImpl implements IFreeboardDao {
 	 * 게시판 목록
 	 */
 	@Override
-	public List<FreeboardVO> getFreeboardList() throws SQLException {
-		return client.queryForList("free.freeboardList");
+	public List<FreeboardVO> getFreeboardList(Map<String, String> params) throws SQLException {
+		return client.queryForList("free.freeboardList", params);
 	}
 
+	/**`	
+	 * 댓글 등록
+	 */
+	@Override
+	public String insertFreeboardReplyInfo(FreeboardVO freeboardInfo)
+			throws SQLException {
+		String bo_no= null;
+		try {
+			client.startTransaction();
+			//다수의 DML명령어
+			String bo_seq;
+			if("0".intern() == freeboardInfo.getBo_seq().intern()){
+				//현재의 댓글의 부모가 루트글
+				bo_seq = (String) client.queryForObject("free.incrementSeq",freeboardInfo);
+			}else{
+				//현재 댓글의 부모가 댓글, 대댓글, 대대댓글
+				client.update("free.updateSeq", freeboardInfo);
+				bo_seq = String.valueOf(Integer.parseInt(freeboardInfo.getBo_seq())+1);
+			}
+			freeboardInfo.setBo_seq(bo_seq);
+			freeboardInfo.setBo_depth(String.valueOf(Integer.parseInt(freeboardInfo.getBo_depth())+1));
+			
+			bo_no = (String) client.insert("free.insertFreeboardReply",freeboardInfo);
+			
+			client.commitTransaction();
+		} finally{
+			client.endTransaction();
+		}
+		
+		return bo_no;
+	}
 	/**
 	 * 게시글 등록
 	 */
@@ -83,6 +114,11 @@ public class IFreeboardDaoImpl implements IFreeboardDao {
 	public void deleteFreeboardInfo(Map<String, String> params)
 			throws SQLException {
 		client.update("free.deleteFreeboard", params);
+	}
+
+	@Override
+	public int getTotalCount(Map<String, String> params) throws SQLException {
+		return (int) client.queryForObject("free.totalCount", params);
 	}
 
 }

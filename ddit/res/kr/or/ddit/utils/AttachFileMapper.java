@@ -5,13 +5,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.Filter;
+
 import kr.or.ddit.global.GlobalConstant;
 import kr.or.ddit.vo.FileItemVO;
 import kr.or.ddit.vo.IDPictureVO;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.io.FilenameUtils;
-
+/**
+ * @Class Name : AttachFileMapper.java
+ * @Description : 회원가입 사진등록위한 메퍼
+ * @Modification Information
+ * @author 정희수
+ * @since  2018.03.15.
+ * @version 1.0
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    수정일       수정자          수정내용
+ *    -------      -------     -------------------
+ *    2018.03.15.  정희수      최초작성
+ * Copyright (c) 2018 by DDIT  All right reserved
+ * </pre>
+ */
 public class AttachFileMapper {
 
 	public static List<FileItemVO> mapping(String bo_no, FileItem[] items) {

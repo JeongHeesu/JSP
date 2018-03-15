@@ -40,10 +40,39 @@
 		 WHERE BO_STATUS = 'y'
 	</sql>
 	
-	<select id="freeboardList" resultClass="freeVO">
+	<sql id="searchCondition">
+		 <dynamic prepend="AND">
+	   		<isNotEmpty property="search_keycode" open="(" close=")">
+		    	<isEqual property="search_keycode" compareValue="TOTAL">
+		    		BO_TITLE LIKE '%'||#search_keyword#||'%'
+					OR BO_CONTENT LIKE '%'||#search_keyword#||'%'
+					OR BO_NICKNAME LIKE '%'||#search_keyword#||'%'
+		    	</isEqual>
+		    	<isEqual property="search_keycode" compareValue="TITLE">
+		    		BO_TITLE LIKE '%'||#search_keyword#||'%'
+		    	</isEqual>
+		    	<isEqual property="search_keycode" compareValue="CONTENT">
+		    		BO_CONTENT LIKE '%'||#search_keyword#||'%'
+		    	</isEqual>
+		    	<isEqual property="search_keycode" compareValue="WRITER">
+		    		BO_NICKNAME LIKE '%'||#search_keyword#||'%'
+		    	</isEqual>
+		    </isNotEmpty>
+	   </dynamic>
+	
+	</sql>
+	
+	<select id="freeboardList" resultClass="freeVO" parameterClass="map">
 		SELECT B. *
 		   FROM (SELECT ROWNUM rnum, A.*
-				   FROM (<include refid="selectAll"/>) A) B
+				   FROM (<include refid="selectAll"/>
+				   <include refid="searchCondition"/>
+				   ORDER BY BO_GROUP, BO_SEQ DESC
+				   ) A) B
+		<![CDATA[		   
+		  WHERE B.RNUM <=#startCount#
+		    AND	B.RNUM >= #endCount#
+		]]>    	   
 	  ORDER BY B.rnum DESC
 	</select>
 	
@@ -100,4 +129,59 @@
 		 where BO_NO = #bo_no# 
 	</update>
 	
+	<select id="incrementSeq" parameterClass="freeVO" resultClass="string">
+		SELECT MAX(BO_SEQ)+1
+		  FROM FREEBOARD
+		 WHERE BO_GROUP = #bo_group#
+	</select>
+	
+	<update id="updateSeq" parameterClass="freeVO">
+		UPDATE FREEBOARD
+		   SET BO_SEQ = BO_SEQ + 1
+		 WHERE BO_GROUP = #bo_group# 
+		 <![CDATA[
+		   AND BO_SEQ > #bo_seq#
+		 ]]>
+	</update>
+	
+	<insert id="insertFreeboardReply" parameterClass="freeVO">
+		<selectKey keyProperty="bo_no" resultClass="string">
+			SELECT freeboard_seq.nextval FROM DUAL
+		</selectKey>
+		INSERT INTO FREEBOARD
+		(
+			BO_NO,
+			BO_TITLE,
+			BO_WRITER,
+			BO_NICKNAME,
+			BO_PWD,
+			BO_MAIL,
+			BO_IP,
+			BO_CONTENT,
+			BO_GROUP,
+			BO_SEQ,
+			BO_DEPTH
+		)
+		VALUES
+		(
+			#bo_no#,
+			#bo_title#,
+			#bo_writer#,
+			#bo_nickname#,
+			#bo_pwd#,
+			#bo_mail#,
+			#bo_ip#,
+			#bo_content#,
+			#bo_group#,
+			#bo_seq#,
+			#bo_depth#
+		)
+	</insert>
+	
+	<select id="totalCount" resultClass="int" parameterClass="map">
+		 SELECT COUNT(BO_NO)
+           FROM FREEBOARD
+      	  WHERE BO_STATUS = 'y'
+      <include refid="searchCondition"/>
+	</select>
 </sqlMap>

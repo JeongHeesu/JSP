@@ -9,6 +9,8 @@
  *    수정일       수정자          수정내용
  *    -------      -------     -------------------
  *    2018.03.12.  정희수     최초작성
+ *    2018.03.14.  정희수     파일 불러오기
+ *    2018.03.15.  정희수     댓글
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
@@ -129,7 +131,7 @@ $(function(){
 		<div class="col-sm-offset-2 col-sm-10">
 			<button type="button" class="btn btn-success" name="check">글쓰기</button>
 			<button type="button" class="btn btn-danger" id="deleteBtn" name="check">삭제</button>
-			<button type="button" class="btn btn-primary">답글</button>
+			<button type="button" class="btn btn-primary" id="btn3" name="check">댓글</button>
 			<button type="button" class="btn btn-info" id="ListGo">목록</button>
 			<button type="submit" class="btn btn-default" style="float: right" name="check">수정</button>
 		</div>
@@ -228,6 +230,13 @@ $(function(){
 		
 	});
 	
+	$('#btn3').click(function(){
+		var title =encodeURIComponent( '${freeboardInfo.bo_title}');
+		var params ='?rnum=${param.rnum}&bo_title='+title+
+					'&bo_group=${freeboardInfo.bo_group}&bo_seq=${freeboardInfo.bo_seq}&bo_depth=${freeboardInfo.bo_depth}';
+		$(location).attr('href','${pageContext.request.contextPath}/12/main.jsp?contentPage=/12/freeboard/freeboardReplyForm.jsp'+params);
+	});
+	
 	$('#deleteBtn').click(function(){
 		if('${freeboardInfo.bo_writer}' != '${LOGIN_MEMBERINFO.mem_id}'){
 			BootstrapDialog.show({
@@ -236,7 +245,7 @@ $(function(){
 			});
 			return false;
 		}
-		$(location).attr('href','${pageContext.request.contextPath}/12/freeboard/deleteFreeboard.jsp?bo_no=${param.bo_no}');
+		$(location).attr('href','${pageContext.request.contextPath}/12/freeboard/deleteFreeboard.jsp?rnum=${param.rnum}');
 	});
 	
 	

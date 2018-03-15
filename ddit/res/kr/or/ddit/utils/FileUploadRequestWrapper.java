@@ -19,6 +19,22 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.http.fileupload.util.FileItemHeadersImpl;
 
+/**
+ * @Class Name : FileUploadRequestWrapper.java
+ * @Description : 파일 올리는 클래스
+ * @Modification Information
+ * @author 정희수
+ * @since  2018.03.14.
+ * @version 1.0
+ * @see HttpServletRequestWrapper
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    수정일       수정자          수정내용
+ *    -------      -------     -------------------
+ *    2018.03.14.  정희수      최초작성
+ * Copyright (c) 2018 by DDIT  All right reserved
+ * </pre>
+ */
 
 // FileUploadRequestWrapper is a HttpServletReques
 public class FileUploadRequestWrapper extends HttpServletRequestWrapper {
